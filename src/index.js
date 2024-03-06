@@ -1,4 +1,5 @@
 import setTime from './time.js';
+import { MainMenutemplate } from './Main-Menu.js';
 
 import {
     createPost,
@@ -14,9 +15,9 @@ export const DOM = {
 
     createPostBtn: document.querySelector('#create-post-btn'),
     userPosts: document.querySelector('#user-posts'),
-    contentContainer: document.querySelector('#content-container')
+    contentContainer: document.querySelector('#content-container'),
+    root: document.querySelector('#root')
 }
-
 
 window.addEventListener('load', displayBlogName)
 window.addEventListener('load', addEventsToPosts)
@@ -25,3 +26,4 @@ window.addEventListener('load', addEventsToPosts)
 DOM.createPostBtn.addEventListener('click', createPost);
 DOM.createNewPostBtn.addEventListener('click', showAddMenu)
 setTime()
+MainMenutemplate()
