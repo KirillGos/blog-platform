@@ -1,13 +1,15 @@
 import { DOM } from "./index.js";
 
-document.addEventListener('load', addEventsToPosts)
-localStorage.Posts = JSON.stringify([{
-    name: 'Demo',
-    content: `
+if (localStorage.Posts === undefined) {
+    localStorage.Posts = JSON.stringify([{
+        name: 'Demo',
+        content: `
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, quisquam et! Reprehenderit ipsam distinctio perspiciatis praesentium tenetur numquam impedit, ducimus quibusdam necessitatibus. Deleniti provident hic temporibus, sequi vel voluptatem similique.`,
 
-    id: 0
-}]);
+        id: 0
+    }]);
+}
+
 const addMenuTemplate = `
     <h1>Create a new blog</h1>
     <label for="blog-name-input">Enter the name of your new post:</label>
@@ -39,24 +41,30 @@ function createNewPostEl(name, id) {
     )
 }
 
-export function createPost() {
+function createPost() {
     const name = document.querySelector('#blog-name-input').value;
     const content = document.querySelector('#new-blog-textarea').value;
-    const id = JSON.parse(localStorage.Posts).length;    
-
-    DOM.userPosts.insertAdjacentHTML('beforeend', createNewPostEl(name, id));
+    const id = JSON.parse(localStorage.Posts).length;
 
     const newPost = new addPost(name, content, id);
     const newPosts = JSON.parse(localStorage.Posts);
     newPosts.push(newPost);
     localStorage.Posts = JSON.stringify(newPosts);
-
+    
     document.querySelector('#blog-name-input').value = '';
     document.querySelector('#new-blog-textarea').value = '';
+    displayBlogName();
     addEventsToPosts();
 }
 
-export function showPost(e) {
+function displayBlogName() {
+    const Posts = JSON.parse(localStorage.Posts);
+    DOM.userPosts.innerHTML = '';
+    Posts.forEach(post => {
+        DOM.userPosts.insertAdjacentHTML('beforeend', createNewPostEl(post.name, post.id));
+    })
+}
+function showPost(e) {
     const id = e.target.id;
 
     if (JSON.parse(localStorage.Posts)[id].id == id) {
@@ -67,15 +75,16 @@ export function showPost(e) {
     }
 }
 
-export function addEventsToPosts() {
+function addEventsToPosts() {
     const posts = document.querySelectorAll('.post-item');
     posts.forEach(post => {
         post.addEventListener('click', showPost)
     });
 }
 
-export function showAddMenu() {
+function showAddMenu() {
     DOM.contentContainer.innerHTML = addMenuTemplate;
     const createPostBtn = document.querySelector('#create-post-btn');
     createPostBtn.addEventListener('click', createPost);
 }
+export { createPost, addEventsToPosts, showAddMenu, displayBlogName }
