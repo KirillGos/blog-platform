@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="header-sec">
+        <h1 class="header-title"><i>Blog Platform</i></h1>
+        <div id="show-date"></div>
+    </header>
+    <div id="main-sec">
+        <div id="sidebar">
+            <div id="create-new-post">
+                <h3 class="sidebar-title">Create a Post:</h3>
+                <button id="create-new-post-btn">New Post</button>
+            </div>
+            <hr>
+            <h3 class="sidebar-title">Your Blogs:</h3>
+            <div id="user-posts">
+               <li class="post-item" id="0">Demo</li>
+            </div>
+        </div>
+        <div id="content-container">
+            <h1>Create a new blog</h1>
+            <label for="blog-name-input">Enter the name of your new post:</label>
+            <input id="blog-name-input">
+            <label for="new-blog-textarea">Your post content:</label>
+            <textarea id="new-blog-textarea"></textarea>
+            <button id="create-post-btn">Publish</button>
+        </div>
+    </div>
+    <footer id="footer"></footer>
+    <script type="module" src="./src/index.js"></script>
+</body>
+</html>
