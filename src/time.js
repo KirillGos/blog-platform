@@ -1,8 +1,8 @@
 import { DOM } from "./index.js";
 
-function setTime() {
+function getTime() {
     const time = new Date();
     const date =  time.toLocaleDateString();
     DOM.dateDisplay.innerHTML = date;
 }
-export default setTime;
+export default getTime;

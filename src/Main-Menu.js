@@ -4,13 +4,11 @@ export function MainMenutemplate() {
     const Posts  = JSON.parse(localStorage.Posts);
     const template =
         `
-        <div id='main-menu'>
             <div id="munu-header" class="main-menu-sec"> 
                 <h1>Welcome back Kirill</h1>
             </div>
             <div id='random-post' class="main-menu-sec">
-            <h3>${Posts[getRandomIndex()].name}</h3>   
-                <p>${Posts[getRandomIndex()].content}</p>
+                <p><i>Time is running out no need to take it slow</i></p>
             </div>
             <div id="main-menu-title-sec" class="main-menu-sec">
                 <h1>Manage Your Blogs</h1>
@@ -22,9 +20,8 @@ export function MainMenutemplate() {
                 <button id='edit-post-btn'>Edit Post</button>
             </div>
             <div id='preview-posts' class="main-menu-sec"></div>
-        <div>
 `;
-    DOM.root.innerHTML = template;
+    DOM.contentContainer.innerHTML  = template;
     previewTemplate()
 }
 function getRandomIndex() {

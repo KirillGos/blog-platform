@@ -1,20 +1,8 @@
 import { DOM } from "./index.js";
-
+import Data from "./DATA.json" assert { type: 'json' };
+// localStorage.clear();
 if (localStorage.Posts === undefined) {
-    localStorage.Posts = JSON.stringify([{
-        name: 'About this App',
-        content: `-This simple JavaScript Application allows you to create simple blog posts that consists of a name and content.  
-        
- -This application uses localStorage api to store your posts in your browser. Meaning even after you refresh or leave the page your posts will be still stored in your browser.
- 
- -I've built this application to practice my DOM manipulation skills.
- 
- -You can inspect the code in my github account.
- 
- -This application is built only by using HTML, CSS and vanilla JavaScript`,
-
-        id: 0
-    }]);
+     localStorage.Posts = JSON.stringify(Data);
 }
 
 const addMenuTemplate = `
@@ -26,22 +14,28 @@ const addMenuTemplate = `
     <button id="create-post-btn">Publish</button>
 `
 class addPost {
-    constructor(name, content, id) {
+    constructor(name, content, id, date) {
         this.name = name;
         this.content = content;
         this.id = id;
+        this.date = date;
     }
 }
 
-function postTemplate(name, content) {
+function postTemplate(name, content, date) {
     return (
         `
-        <h1 id="post-title">${name}</h1>
+        <div id="post-title">${name} <span class='post-title-time'> ${date}</span></div>
         <p id="post-content">${content}</p>
         `
     )
 }
 
+function timeOfCreation() {
+    const time = new Date();
+    const date =  time.toLocaleDateString();
+    return date;
+}
 function createNewPostEl(name, id) {
     return (
         `<li class="post-item" id="${id}">${name}</li>`
@@ -49,11 +43,12 @@ function createNewPostEl(name, id) {
 }
 
 function createPost() {
+
     const name = document.querySelector('#blog-name-input').value;
     const content = document.querySelector('#new-blog-textarea').value;
     const id = JSON.parse(localStorage.Posts).length;
-
-    const newPost = new addPost(name, content, id);
+    const time = timeOfCreation();
+    const newPost = new addPost(name, content, id, time);
     const newPosts = JSON.parse(localStorage.Posts);
     newPosts.push(newPost);
     localStorage.Posts = JSON.stringify(newPosts);
@@ -77,8 +72,8 @@ function showPost(e) {
     if (JSON.parse(localStorage.Posts)[id].id == id) {
         const name = JSON.parse(localStorage.Posts)[id].name;
         const content = JSON.parse(localStorage.Posts)[id].content
-
-        DOM.contentContainer.innerHTML = postTemplate(name, content)
+        const date = JSON.parse(localStorage.Posts)[id].date;
+        DOM.contentContainer.innerHTML = postTemplate(name, content, date)
     }
 }
 

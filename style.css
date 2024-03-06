@@ -157,5 +157,10 @@ footer {
     gap: 15px;
 }
 .hidden {
-    display: none;
+    display: none !important;
+}
+#post-title {
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
 }
