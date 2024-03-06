@@ -2,9 +2,16 @@ import { DOM } from "./index.js";
 
 if (localStorage.Posts === undefined) {
     localStorage.Posts = JSON.stringify([{
-        name: 'Demo',
-        content: `
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, quisquam et! Reprehenderit ipsam distinctio perspiciatis praesentium tenetur numquam impedit, ducimus quibusdam necessitatibus. Deleniti provident hic temporibus, sequi vel voluptatem similique.`,
+        name: 'About this App',
+        content: `-This simple JavaScript Application allows you to create simple blog posts that consists of a name and content.  
+        
+ -This application uses localStorage api to store your posts in your browser. Meaning even after you refresh or leave the page your posts will be still stored in your browser.
+ 
+ -I've built this application to practice my DOM manipulation skills.
+ 
+ -You can inspect the code in my github account.
+ 
+ -This application is built only by using HTML, CSS and vanilla JavaScript`,
 
         id: 0
     }]);
@@ -50,7 +57,7 @@ function createPost() {
     const newPosts = JSON.parse(localStorage.Posts);
     newPosts.push(newPost);
     localStorage.Posts = JSON.stringify(newPosts);
-    
+
     document.querySelector('#blog-name-input').value = '';
     document.querySelector('#new-blog-textarea').value = '';
     displayBlogName();

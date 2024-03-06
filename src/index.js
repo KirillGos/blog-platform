@@ -20,7 +20,7 @@ export const DOM = {
 
 window.addEventListener('load', displayBlogName)
 window.addEventListener('load', addEventsToPosts)
-window.addEventListener('dblclick', ()=> localStorage.clear())
+// window.addEventListener('dblclick', ()=> localStorage.clear())
 
 DOM.createPostBtn.addEventListener('click', createPost);
 DOM.createNewPostBtn.addEventListener('click', showAddMenu)
