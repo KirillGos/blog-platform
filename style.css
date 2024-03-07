@@ -134,6 +134,10 @@ footer {
     overflow: hidden;
     padding: 10px;
     border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
 }
 #main-menu {
     display: grid;
@@ -163,4 +167,13 @@ footer {
     font-size: 2rem;
     display: flex;
     justify-content: space-between;
+}
+
+#edit-post {
+    font-size: 2rem;
+    color: black;
+}
+
+#edit-post:hover {
+    color: blue;
 }

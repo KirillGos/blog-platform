@@ -21,10 +21,10 @@ export const DOM = {
 }
 window.addEventListener('load', displayBlogName)
 window.addEventListener('load', addEventsToPosts)
-// window.addEventListener('dblclick', ()=> localStorage.clear())
 
-showAddMenu()
+
+getTime();
+
 DOM.displayMainMenuBtn.addEventListener('click', MainMenutemplate)
 DOM.createPostBtn.addEventListener('click', createPost);
 DOM.createNewPostBtn.addEventListener('click', showAddMenu)
-getTime()

@@ -1,11 +1,15 @@
 import { DOM } from "./index.js";
+import  {addEventsToEditBtns} from "./EditPosts.js";
 
+if(localStorage.name === undefined) {
+    localStorage.name =  prompt('What is your name?');
+}
 export function MainMenutemplate() {
     const Posts  = JSON.parse(localStorage.Posts);
     const template =
         `
             <div id="munu-header" class="main-menu-sec"> 
-                <h1>Welcome back Kirill</h1>
+                <h1>Welcome back ${localStorage.name}</h1>
             </div>
             <div id='random-post' class="main-menu-sec">
                 <p><i>Time is running out no need to take it slow</i></p>
@@ -14,26 +18,19 @@ export function MainMenutemplate() {
                 <h1>Manage Your Blogs</h1>
                 <h2 id="statistics-title">Amount of blogs: ${Posts.length}</h2>
             </div>
-
-            <div id='edit' class="main-menu-sec hidden">
-                <button id='delete-post-btn'>Delete Post</button>
-                <button id='edit-post-btn'>Edit Post</button>
-            </div>
             <div id='preview-posts' class="main-menu-sec"></div>
 `;
     DOM.contentContainer.innerHTML  = template;
     previewTemplate()
 }
-function getRandomIndex() {
-    return Math.floor(Math.random() * JSON.parse(localStorage.Posts).length);
-}
+
 
 function previewTemplate() {
     const posts = JSON.parse(localStorage.Posts);
     const postsArray = posts.map(item => {
      return `  
-            <div class="preview">
-                <h3 preview-title>${item.name}</h3>
+            <div class="preview" id="${item.id}">
+                <h3 class="preview-title">${item.name}</h3> <span id="edit-post">🛠</span>
                 </div>
        `;
     });
@@ -42,4 +39,5 @@ function previewTemplate() {
     postsArray.forEach(item => {
         previewPosts.insertAdjacentHTML('beforeend', item);
     });
+    addEventsToEditBtns();
 }
