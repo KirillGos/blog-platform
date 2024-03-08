@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Platform</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header id="header-sec">
+    <div id="sidebar">
         <h1 class="header-title"><i>Blog Platform</i></h1>
-        <div id="show-date"></div>
-    </header>
-    <div id="main-sec">
-        <div id="sidebar">
-            <div id="create-new-post">
-                <h3 class="sidebar-title">Create a Post:</h3>
-                <button id="create-new-post-btn" class="yellow-button">New Post</button>
-            </div>
-            <hr>
-
-            <div id="sidebar-main-menu">
-                <h3 class="sidebar-title">Main Menu:</h3>
-                <button id="enter-main-menu" class="yellow-button">Enter</button>
-            </div>
-            <hr>
-
-            <h3 class="sidebar-title">Your Blogs:</h3>
-            <div id="user-posts">
-               <li class="post-item" id="0">Demo</li>
-            </div>
+        <div id="create-new-post">
+            <h3 class="sidebar-title">Create a Post:</h3>
+            <button id="create-new-post-btn" class="yellow-button">New Post</button>
         </div>
-        <div id="root">
-            <div id="content-container">
-                <h1>Create a new blog</h1>
-                <label for="blog-name-input">Enter the name of your new post:</label>
-                <input id="blog-name-input">
-                <label for="new-blog-textarea">Your post content:</label>
-                <textarea id="new-blog-textarea"></textarea>
-                <button id="create-post-btn">Publish</button>
-            </div>
+        <hr>
+
+        <div id="sidebar-main-menu">
+            <h3 class="sidebar-title">Main Menu:</h3>
+            <button id="enter-main-menu" class="yellow-button" data-status="not-active">Enter</button>
+        </div>
+        <hr>
+
+        <h3 class="sidebar-title">Your Blogs:</h3>
+        <div id="sidebar-user-posts">
+            <li class="post-item" id="0">Demo</li>
         </div>
     </div>
-    <footer id="footer"></footer>
+    <header id="header">
+         <div id="search-sec">
+        <div id='search-posts-sec'>
+            <label for="search-posts-input">🔎</label>
+            <input type="text" id="search-posts-input">
+        </div>
+        <div id="show-date"></div>
+    </div>
+    <h1 id="user-name-display">Welcome back <span id="user-name"></span> </h1>
+    </header>
+   
+
+    <div id="root"></div>
     <script type="module" src="./src/index.js"></script>
 </body>
+
 </html>
