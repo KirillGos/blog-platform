@@ -12,8 +12,8 @@ function createPostCards(){
               <p>${card.description}</p>
             </div>
             <div id="card-bottom">
-                <div>🛠</div>
-                <div>🗑</div>
+                <div id="edit-post-btn"  class="change">🛠</div>
+                <div id="delete-post-btn" class="change">🗑</div>
             </div>
         </div>`)
     });
@@ -29,19 +29,18 @@ export function MainMenutemplate(e) {
             
           </div>
         <div id="user-information-sidebar">
-            <div id="blog-info">
-                <div id="about-post">
-                    <h2>You have:12  blogs</h2>
-                    <button id='change-display' class="yellow-button">Change post display</button>
-                </div>
-                <div id="delete-all">
-                    <h2>Delete all of your posts</h2>
-                    <button class="yellow-button">Delete All</button>
-                </div>
+            <div id="user-info-sidebar-to-do">
+            <div id="user-info-sidebar-blog-info">
+                <h3>You have <span id="amount-of-blogs"> posts</span></h3>
+                <p>In the simple to do app below you can set temporary goals for your blogs</p>
             </div>
-            <div id="quote-of-the-day">
-                <h2>Quote of the Day</h2>
-                <p>Nothing changes if nothing changes.</p></div>
+            <h2>To-Do-List</h2>
+                <div id="to-do-sec">
+                    <div class="to-do-item">Learn english completely</div>
+                    <div class="to-do-item">Enter a university</div>
+                    <div class="to-do-item">Learn coding</div>
+                </div>
+                <button id="add-a-to-do-btn">Add an Item</button>
             </div>
         </div>
 `;
@@ -50,16 +49,4 @@ export function MainMenutemplate(e) {
         DOM.header.classList = '';
         createPostCards();
       
-}
-
-
-function previewTemplate() {
-    const posts = JSON.parse(localStorage.Posts);
-    const postsArray = posts.map(item => {
-     return `  
-            <div class="preview" id="${item.id}">
-                <h3 class="preview-title">${item.name}</h3> <span id="edit-post">🛠</span>
-                </div>
-       `;
-    });
 }
