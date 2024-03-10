@@ -36,9 +36,9 @@ export function MainMenutemplate(e) {
             </div>
             <h2>To-Do-List</h2>
                 <div id="to-do-sec">
-                    <div class="to-do-item">Learn english completely</div>
-                    <div class="to-do-item">Enter a university</div>
-                    <div class="to-do-item">Learn coding</div>
+                    <div class="to-do-item">Learn JavaScript</div>
+                    <div class="to-do-item">Learn Web API</div>
+                    <div class="to-do-item">Learn React</div>
                 </div>
                 <button id="add-a-to-do-btn">Add an Item</button>
             </div>
